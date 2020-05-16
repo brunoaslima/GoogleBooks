@@ -6,7 +6,7 @@ import okhttp3.Request
 import java.lang.Exception
 import java.util.concurrent.TimeUnit
 
-object bookHttp {
+object BookHttp {
 
     private const val API_KEY = "AIzaSyDzoCagmljfTp2ylJvJZIk24aro-b_t1S4"
     private const val BOOK_JSON_URL = "https://www.googleapis.com/books/v1/volumes?q=%s&key=$API_KEY"
@@ -16,7 +16,7 @@ object bookHttp {
         .connectTimeout(5, TimeUnit.SECONDS)
         .build()
 
-    fun searchBook(q: String){
+    fun searchBook(q: String): SearchResult?{
         val request = Request.Builder()
             .url(String.format(BOOK_JSON_URL, q))
             .build()
